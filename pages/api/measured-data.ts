@@ -3,7 +3,7 @@ import { QueryCommand, QueryCommandInput, TimestreamQueryClient } from '@aws-sdk
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
-  data: string
+  data: any
 }
 
 export default async function handler(
@@ -17,6 +17,6 @@ export default async function handler(
     }
     const apiRes = await client.send(new QueryCommand(queryCommand));
     console.log(apiRes);
-    res.status(200).json({ data: "test"})
+    return res.status(200).json({ data: apiRes})
   }
 }
