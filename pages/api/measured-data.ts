@@ -3,7 +3,7 @@ import { QueryCommand, QueryCommandInput, TimestreamQueryClient } from '@aws-sdk
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
-  name: any
+  data: string
 }
 
 export default async function handler(
@@ -16,6 +16,7 @@ export default async function handler(
       QueryString: "select count(*) from iot.sensordata",
     }
     const apiRes = await client.send(new QueryCommand(queryCommand));
-    // res.status(200).json({ data: apiRes })
+    console.log(apiRes);
+    res.status(200).json({ data: "test"})
   }
 }
